@@ -1,0 +1,20 @@
+442. Find All Duplicates in an Array
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+
+        List<Integer> resultSet = new ArrayList<>(); //
+          Set<Integer> uniqueSet= new HashSet<>();    //to store unique element
+   
+         for(int i=0;i<nums.length;i++)
+         {
+             // If already present, then it is a duplicate
+             if(uniqueSet.contains(nums[i]))
+             resultSet.add(nums[i]);
+
+             // Add the number to the set
+             uniqueSet.add(nums[i]);
+         }
+       return resultSet;
+
+    }
+}
