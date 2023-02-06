@@ -32,14 +32,25 @@ The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit int
 //Solution. //kadanes algorithm
 class Solution {
     public int maxProduct(int[] nums) {
-        int max_sum = nums[0];
-        int curr_sum = max_sum;
+     if (nums.length ==0)
+     {
+    return 0;
+     }
+     int min = nums[0];
+     int max = nums[0];
+     int result = max;
 
-        for(int i=1;i<nums.length;i++)
-        {
-            curr_sum = Math.max(curr_sum*nums[i],nums[i]);
-            max_sum= Math.max(curr_sum,max_sum);
-        }
-        return max_sum;
+     for(int i=1;i<nums.length;i++)
+     {
+         int cur = nums[i];
+         int temp  = Math.max(cur,Math.max(min*cur,max*cur));
+         min = Math.min(cur,Math.min(min*cur,max*cur));
+         max = temp;
+         result = Math.max(result,max);
+     }
+
+
+return result;
     }
+    
 }
